@@ -13,7 +13,9 @@ def get_tags(page):
     url_og= soup.find("meta",  property="og:url")
     image=soup.find("meta",  property="og:image")
     video = soup.find("meta",  property="og:video")
+
     print("checking tags")
+
     #print(title["content"] if title else "No meta title given")
     #print(descrption["content"] if descrption else "No description given")
     #print(url_og["content"] if url_og else "No meta url given")
@@ -58,9 +60,11 @@ class MultiThreadScraper:
         url = soup.find("meta",  property="og:url")
         title = soup.find("meta",  property="og:title")
         descrption = soup.find("meta",  property="og:description")
-        #test2 = test["content"]
+        publishtime= soup.find("time")
+        #print(publishtime["datetime"])
         if title != None and descrption != None and url != None:
             test2 = url["content"]
+            print(publishtime["datetime"])
             self.is_article.add(test2)
         return 
  
